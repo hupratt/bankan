@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { getLeads } from "../../actions/posts";
+import { getLeads, deleteLead } from "../../actions/posts";
 import PropTypes from "prop-types";
 
 import {
@@ -33,6 +33,12 @@ export class Posts extends Component {
         <Detail>{postItem.userId}</Detail>
         <Footer />
         <CustomPopoverContainer />
+        <button
+          onClick={this.props.deleteLead.bind(this, postItem.id)}
+          className="btn btn-danger btn-sm"
+        >
+          Delete
+        </button>
       </MovableCardWrapper>
     ));
     return <Fragment>{list}</Fragment>;
@@ -45,5 +51,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getLeads }
+  { getLeads, deleteLead }
 )(Posts);
