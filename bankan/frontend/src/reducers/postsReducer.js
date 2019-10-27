@@ -9,6 +9,7 @@ const initialState = {
   posts: []
 };
 
+//reducer updates the datastore: store.js
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_LEADS:

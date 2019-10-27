@@ -11,6 +11,11 @@ import Dashboard from "./posts/Dashboard";
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import PrivateRoute from "./common/PrivateRoute";
+import Header from "./layout/Header";
+
+import { Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+import Alerts from "./layout/Alerts";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -26,29 +31,27 @@ class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
   }
-
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <Fragment>
-            <div className="container">
-              <Switch>
-                <PrivateRoute exact path="/" component={Dashboard} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-              </Switch>
-            </div>
-          </Fragment>
-        </Router>
+        <AlertProvider template={AlertTemplate} {...alertOptions}>
+          <Router>
+            <Fragment>
+              <Alerts />
+              <Header />
+              <div className="container">
+                <Switch>
+                  <PrivateRoute exact path="/" component={Dashboard} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                </Switch>
+              </div>
+            </Fragment>
+          </Router>
+        </AlertProvider>
       </Provider>
     );
   }
 }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
-
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("root"));
