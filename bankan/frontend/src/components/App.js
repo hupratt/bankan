@@ -10,17 +10,21 @@ import {
 } from "../styles/Base";
 
 export default class App extends Component {
-  // static state = { "0": { title: "hello", completed: "false" } };
-  state = { title: "hello", completed: "false" };
+  state = { posts: [] };
+  componentDidMount() {
+    this.setState({
+      posts: [
+        { title: "title-1", content: "content-1", slug: "slug-1", key: "1" },
+        { title: "title-2", content: "content-2", slug: "slug-2", key: "2" }
+      ]
+    });
+  }
   static url = "https://jsonplaceholder.typicode.com/todos";
   render() {
-    return (
-      <MovableCardWrapper>
-        <CardHeader> {this.state.title} </CardHeader>
-        <Detail>hELLO</Detail>
-        <Footer />
-      </MovableCardWrapper>
-    );
+    const { posts } = this.state;
+    console.log(posts);
+    var list = posts.map((postItem, index) => <li>{postItem.content}</li>);
+    return <ul>{list}</ul>;
   }
 }
 
