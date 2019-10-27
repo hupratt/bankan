@@ -1,5 +1,7 @@
 import ReactDOM from "react-dom";
 import React, { Component } from "react";
+import axios from "axios";
+
 import {
   MovableCardWrapper,
   CardHeader,
@@ -12,18 +14,15 @@ import {
 export default class App extends Component {
   state = { posts: [] };
   componentDidMount() {
-    this.setState({
-      posts: [
-        { title: "title-1", content: "content-1", slug: "slug-1", key: "1" },
-        { title: "title-2", content: "content-2", slug: "slug-2", key: "2" }
-      ]
+    axios.get("https://jsonplaceholder.typicode.com/todos").then(res => {
+      this.setState({ posts: res.data });
     });
   }
-  static url = "https://jsonplaceholder.typicode.com/todos";
+
   render() {
     const { posts } = this.state;
     var list = posts.map((postItem, index) => (
-      <li key={index}>{postItem.content}</li>
+      <li key={index}>{postItem.title}</li>
     ));
     return <ul>{list}</ul>;
   }
