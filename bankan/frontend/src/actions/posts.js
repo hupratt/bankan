@@ -7,7 +7,7 @@ import { GET_LEADS } from "./types";
 // GET LEADS
 export const getLeads = () => (dispatch, getState) => {
   axios
-    .get("https://jsonplaceholder.typicode.com/todos") //, tokenConfig(getState))  /api/posts/
+    .get("/api/posts/") //, tokenConfig(getState))  /api/posts/
     .then(res => {
       dispatch({
         type: GET_LEADS,
