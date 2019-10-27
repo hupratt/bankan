@@ -6,7 +6,8 @@ import {
   CardRightContent,
   CardTitle,
   Detail,
-  Footer
+  Footer,
+  CustomPopoverContainer
 } from "../../styles/Base";
 
 export default class Posts extends Component {
@@ -27,8 +28,9 @@ export default class Posts extends Component {
           </CardTitle>
           <CardRightContent>{postItem.completed}</CardRightContent>
         </CardHeader>
-        <Detail>{postItem.completed}</Detail>
+        <Detail>{postItem.userId}</Detail>
         <Footer />
+        <CustomPopoverContainer />
       </MovableCardWrapper>
     ));
     return <Fragment>{list}</Fragment>;
