@@ -30,7 +30,7 @@ export class Posts extends Component {
           </CardTitle>
           <CardRightContent>{postItem.completed}</CardRightContent>
         </CardHeader>
-        <Detail>{postItem.userId}</Detail>
+        <Detail>{postItem.message}</Detail>
         <Footer />
         <CustomPopoverContainer />
         <button
