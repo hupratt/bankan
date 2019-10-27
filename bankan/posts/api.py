@@ -12,7 +12,7 @@ class LeadViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
 
     def get_queryset(self):
-        return self.request.user.Post.all()
+        return self.request.user.posts.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
