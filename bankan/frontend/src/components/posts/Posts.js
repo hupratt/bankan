@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import { getLeads } from "../../actions/posts";
+
 import {
   MovableCardWrapper,
   CardHeader,
@@ -10,14 +12,11 @@ import {
   CustomPopoverContainer
 } from "../../styles/Base";
 
-export default class Posts extends Component {
+export class Posts extends Component {
   state = { posts: [] };
   componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/todos").then(res => {
-      this.setState({ posts: res.data });
-    });
+    this.props.getLeads();
   }
-
   render() {
     const { posts } = this.state;
     var list = posts.map((postItem, index) => (
@@ -36,3 +35,12 @@ export default class Posts extends Component {
     return <Fragment>{list}</Fragment>;
   }
 }
+
+const mapStateToProps = state => ({
+  leads: state.postsReducer.posts
+});
+
+export default connect(
+  mapStateToProps,
+  { getLeads }
+)(Posts);

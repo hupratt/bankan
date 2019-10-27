@@ -6,7 +6,7 @@ import {
 } from "../actions/types.js";
 
 const initialState = {
-  leads: []
+  posts: []
 };
 
 export default function(state = initialState, action) {
@@ -14,22 +14,22 @@ export default function(state = initialState, action) {
     case GET_LEADS:
       return {
         ...state,
-        leads: action.payload
+        posts: action.payload
       };
     case DELETE_LEAD:
       return {
         ...state,
-        leads: state.leads.filter(lead => lead.id !== action.payload)
+        posts: state.posts.filter(lead => lead.id !== action.payload)
       };
     case ADD_LEAD:
       return {
         ...state,
-        leads: [...state.leads, action.payload]
+        posts: [...state.posts, action.payload]
       };
     case CLEAR_LEADS:
       return {
         ...state,
-        leads: []
+        posts: []
       };
     default:
       return state;

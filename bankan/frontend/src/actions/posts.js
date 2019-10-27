@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createMessage, returnErrors } from "./messages";
+// import { createMessage, returnErrors } from "./messages";
 // import { tokenConfig } from "./auth";
 
 import { GET_LEADS } from "./types";
@@ -7,7 +7,7 @@ import { GET_LEADS } from "./types";
 // GET LEADS
 export const getLeads = () => (dispatch, getState) => {
   axios
-    .get("/api/posts/") //, tokenConfig(getState))
+    .get("https://jsonplaceholder.typicode.com/todos") //, tokenConfig(getState))  /api/posts/
     .then(res => {
       dispatch({
         type: GET_LEADS,
