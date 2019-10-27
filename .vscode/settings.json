@@ -1,3 +1,9 @@
 {
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "/home/hugo/Development/bankan/bin/python3.6",
+    "editor.formatOnSave": false,
+    // Enable per-language
+    "[javascript]": {
+        "editor.formatOnSave": true
+    }
 }
