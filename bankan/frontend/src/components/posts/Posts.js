@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getLeads } from "../../actions/posts";
+import PropTypes from "prop-types";
 
 import {
   MovableCardWrapper,
@@ -13,12 +14,14 @@ import {
 } from "../../styles/Base";
 
 export class Posts extends Component {
-  state = { posts: [] };
+  static propTypes = {
+    getLeads: PropTypes.func.isRequired
+  };
   componentDidMount() {
     this.props.getLeads();
   }
   render() {
-    const { posts } = this.state;
+    const { posts } = this.props;
     var list = posts.map((postItem, index) => (
       <MovableCardWrapper key={index}>
         <CardHeader>
@@ -37,7 +40,7 @@ export class Posts extends Component {
 }
 
 const mapStateToProps = state => ({
-  leads: state.postsReducer.posts
+  posts: state.postsReducer.posts
 });
 
 export default connect(
