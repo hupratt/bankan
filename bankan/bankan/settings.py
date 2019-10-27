@@ -47,7 +47,7 @@ ROOT_URLCONF = "bankan.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'bankan', 'frontend', 'templates', 'frontend')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
