@@ -6,13 +6,13 @@ from .serializers import PostSerializer
 
 
 class LeadViewSet(viewsets.ModelViewSet):
-    # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
 
-    # def get_queryset(self):
-    #     return self.request.user.leads.all()
+    def get_queryset(self):
+        return self.request.user.Post.all()
 
-    # def perform_create(self, serializer):
-    #     serializer.save(owner=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
