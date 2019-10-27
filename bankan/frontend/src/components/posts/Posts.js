@@ -17,9 +17,7 @@ export class Posts extends Component {
   static propTypes = {
     getLeads: PropTypes.func.isRequired
   };
-  componentDidMount() {
-    this.props.getLeads();
-  }
+
   render() {
     const { posts } = this.props;
     var list = posts.map((postItem, index) => (
@@ -35,7 +33,15 @@ export class Posts extends Component {
         <CustomPopoverContainer />
       </MovableCardWrapper>
     ));
-    return <Fragment>{list}</Fragment>;
+    return (
+      <Fragment>
+        <button onClick={this.props.getLeads} className="btn btn-primary">
+          {" "}
+          Submit
+        </button>
+        {list}
+      </Fragment>
+    );
   }
 }
 
