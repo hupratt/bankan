@@ -1,30 +1,14 @@
 import ReactDOM from "react-dom";
-import React, { Component } from "react";
-import axios from "axios";
-
-import {
-  MovableCardWrapper,
-  CardHeader,
-  CardRightContent,
-  CardTitle,
-  Detail,
-  Footer
-} from "../styles/Base";
+import React, { Component, Fragment } from "react";
+import Posts from "./posts/Posts";
 
 export default class App extends Component {
-  state = { posts: [] };
-  componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/todos").then(res => {
-      this.setState({ posts: res.data });
-    });
-  }
-
   render() {
-    const { posts } = this.state;
-    var list = posts.map((postItem, index) => (
-      <li key={index}>{postItem.title}</li>
-    ));
-    return <ul>{list}</ul>;
+    return (
+      <Fragment>
+        <Posts />
+      </Fragment>
+    );
   }
 }
 
