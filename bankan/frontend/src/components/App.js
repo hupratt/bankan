@@ -22,8 +22,9 @@ export default class App extends Component {
   static url = "https://jsonplaceholder.typicode.com/todos";
   render() {
     const { posts } = this.state;
-    console.log(posts);
-    var list = posts.map((postItem, index) => <li>{postItem.content}</li>);
+    var list = posts.map((postItem, index) => (
+      <li key={index}>{postItem.content}</li>
+    ));
     return <ul>{list}</ul>;
   }
 }
