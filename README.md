@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+<p align="center" width="100%">
+    <img width="90%" src="https://github.com/hupratt/bankan/blob/master/bankan.png?raw=true">
+</p>
+
+
 ## Available Scripts
 
 In the project directory, you can run:
